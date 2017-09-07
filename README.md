@@ -11,3 +11,10 @@ listens to TTL pulses to initiate and stop recording
 saves timestamps of soundcard triggers
 
 dependent on video_record.py and camera json file
+
+
+pupil_dilation.py:
+
+load .mp4 file and calculates PDR
+
+saves output in .txt ( json format)
