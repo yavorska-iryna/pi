@@ -27,3 +27,5 @@ sudo pip get install picamera numpy RPi json threading
 you will also need:
 sudo raspi-config
 #to enable picamera and ssh 
+
+to isntall opencv for pupil analysis: http://www.pyimagesearch.com/2015/07/27/installing-opencv-3-0-for-both-python-2-7-and-python-3-on-your-raspberry-pi-2/
