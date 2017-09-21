@@ -21,6 +21,7 @@ saves output in .txt ( json format)
 
 depending on your instalation of raspian, extra dependencies that will need to be installed can vary: 
 sudo apt-get install gpac %for mp4 conversion
+
 sudo pip get install picamera numpy RPi json threading
 
 you will also need:
