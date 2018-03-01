@@ -38,6 +38,7 @@ GPIO.setup(channel, GPIO.OUT)
 p = GPIO.PWM(channel,100)
 p.start(50)
 all_move_local = []
+global p 
 
 class pi_video(threading.Thread):
 	def start_listener(on_pin, off_pin, SCT_pin):
