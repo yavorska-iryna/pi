@@ -116,13 +116,12 @@ class pi_video(threading.Thread):
 class pi_motion(threading.Thread):
 	
 	
-	def run(self):
-		GPIO.setup(channel, GPIO.OUT)
-		p = GPIO.PWM(channel,100)
-		p.start(50)
-		all_move_local = []
-		print('Running movements')
-		
+	GPIO.setup(channel, GPIO.OUT)
+	p = GPIO.PWM(channel,100)
+	p.start(50)
+	all_move_local = []
+	print('Running movements')
+
 		
 
 	def baseline():
@@ -159,6 +158,12 @@ class pi_motion(threading.Thread):
 			with open(name, 'w') as f:
 				json.dump(all_move_local, f, ensure_ascii=False)
 
+#Create Class
+motion = pi_motion()
+#Create Thread
+MotionThread = Thread(target=motion.run) 
+#Start Thread 
+MotionThread.start()
 
 #Create Class
 pupil = pi_video()
@@ -167,9 +172,4 @@ PupilThread = Thread(target=pupil.run)
 #Start Thread 
 PupilThread.start()
 
-#Create Class
-motion = pi_motion()
-#Create Thread
-MotionThread = Thread(target=motion.run) 
-#Start Thread 
-MotionThread.start()
+
