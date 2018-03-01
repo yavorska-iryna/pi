@@ -146,17 +146,17 @@ class pi_motion(threading.Thread):
 	
 	movements = []
 	update_pin()
-	while 1:
-		try:
-			events=mouse.read()
-			movements.extend([event.state for event in events if event.code == "REL_Y"])
-		except KeyboardInterrupt:
-			p.stop()
-			GPIO.cleanup()
-			time_string= strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
-			name= "".join([time_string, '.txt'])
-			with open(name, 'w') as f:
-				json.dump(all_move_local, f, ensure_ascii=False)
+while 1:
+	try:
+		events=mouse.read()
+		movements.extend([event.state for event in events if event.code == "REL_Y"])
+	except KeyboardInterrupt:
+		p.stop()
+		GPIO.cleanup()
+		time_string= strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
+		name= "".join([time_string, '.txt'])
+		with open(name, 'w') as f:
+			json.dump(all_move_local, f, ensure_ascii=False)
 
 #Create Class
 motion = pi_motion()
