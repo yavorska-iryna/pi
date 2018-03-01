@@ -115,13 +115,14 @@ class pi_video(threading.Thread):
 	            	SCT=[]
 
 class pi_motion(threading.Thread):
-	GPIO.setup(channel, GPIO.OUT)
-	p = GPIO.PWM(channel,100)
-	p.start(50)
-	all_move_local = []
-	movements = []
-	update_pin()
-	
+	if __name__ == "__main__" and __package__ is None:
+		GPIO.setup(channel, GPIO.OUT)
+		p = GPIO.PWM(channel,100)
+		p.start(50)
+		all_move_local = []
+		movements = []
+		update_pin()
+
 	def baseline():
 		p.ChangeDutyCycle(50)
 
