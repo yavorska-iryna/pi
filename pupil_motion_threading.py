@@ -43,8 +43,8 @@ movements = []
 
 class pi_motion(threading.Thread):
 
-	def baseline():
-		p.ChangeDutyCycle(50)
+	def baseline(i):
+		p.ChangeDutyCycle(i)
 
 
 	def update_pin():
@@ -61,7 +61,7 @@ class pi_motion(threading.Thread):
 			p.ChangeDutyCycle(100.0 - move_local)
 			Timer(delay, update_pin).start()
 		else:
-			baseline()
+			baseline(50)
 			Timer(delay, update_pin).start()
 	
 	movements = []
