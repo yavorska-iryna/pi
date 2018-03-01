@@ -36,10 +36,7 @@ global movements
 delay = .1 #change duty cycle every 100 ms
 mouse = devices.mice[0]
 channel = 15
-GPIO.setup(channel, GPIO.OUT)
-p = GPIO.PWM(channel,100)
-p.start(50)
-all_move_local = []
+
 
 class pi_video(threading.Thread):
 	def start_listener(on_pin, off_pin, SCT_pin):
@@ -118,7 +115,10 @@ class pi_video(threading.Thread):
 	            	SCT=[]
 
 class pi_motion(threading.Thread):
-
+	GPIO.setup(channel, GPIO.OUT)
+	p = GPIO.PWM(channel,100)
+	p.start(50)
+	all_move_local = []
 	movements = []
 	update_pin()
 	
