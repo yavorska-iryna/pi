@@ -31,7 +31,6 @@ SCT=[];
 base_dir = '/home/pi/Videos'
 
 #ball motion params
-global p
 global movements
 delay = .1 #change duty cycle every 100 ms
 mouse = devices.mice[0]
@@ -115,13 +114,12 @@ class pi_video(threading.Thread):
 	            	SCT=[]
 
 class pi_motion(threading.Thread):
-	if __name__ == "__main__" and __package__ is None:
-		GPIO.setup(channel, GPIO.OUT)
-		p = GPIO.PWM(channel,100)
-		p.start(50)
-		all_move_local = []
-		movements = []
-		update_pin()
+
+	GPIO.setup(channel, GPIO.OUT)
+	p = GPIO.PWM(channel,100)
+	p.start(50)
+	all_move_local = []
+
 
 	def baseline():
 		p.ChangeDutyCycle(50)
@@ -142,9 +140,10 @@ class pi_motion(threading.Thread):
 		else:
 			baseline()
 			Timer(delay, update_pin).start()
-
+	movements = []
+	update_pin()
 	
-	while 1:
+	if __name__ == "__main__" and __package__ is None:
 		try:
 			events=mouse.read()
 			movements.extend([event.state for event in events if event.code == "REL_Y"])
