@@ -39,6 +39,7 @@ GPIO.setup(channel, GPIO.OUT)
 p = GPIO.PWM(channel,100)
 p.start(50)
 all_move_local = []
+movements = []
 
 class pi_motion(threading.Thread):
 
