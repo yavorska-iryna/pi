@@ -118,6 +118,10 @@ class pi_video(threading.Thread):
 	            	SCT=[]
 
 class pi_motion(threading.Thread):
+
+	movements = []
+	update_pin()
+	
 	def baseline():
 		p.ChangeDutyCycle(50)
 
@@ -138,8 +142,7 @@ class pi_motion(threading.Thread):
 			baseline()
 			Timer(delay, update_pin).start()
 
-	movements = []
-	update_pin()
+	
 	while 1:
 		try:
 			events=mouse.read()
