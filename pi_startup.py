@@ -37,12 +37,17 @@ def start_listener(on_pin, off_pin, SCT_pin):
 if __name__ == "__main__" and __package__ is None:
     start_listener(on_pin, off_pin, SCT_pin)
     camera = vid.init_camera(vid.CONF_FILE)
+    camera.crop=(.25, .25, .5, .5)
     camera.vflip= "True"
     camera.hflip= "True"
-    camera.exposure_mode="fixedfps"
     camera.shutter_speed=6000
-    camera.zoom=[.3, .4, .5, .6]
     camera.framerate=30
+    # camera.contrast=80
+    #camera.contrast=-15
+    camera.iso = 1000
+    #camera.brightness=70
+    camera.exposure_compensation=25
+    camera.exposure_mode='nightpreview'    
 
     print("Initialized camera")
 
@@ -59,6 +64,7 @@ if __name__ == "__main__" and __package__ is None:
             camera.start_recording(vfile, format='h264')
             c=datetime.now()
             c=str(c)
+            SCT=[]
             SCT.append(c)
             print("Started recording video to {}".format(vfile))
             camera.start_preview()

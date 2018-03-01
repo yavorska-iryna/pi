@@ -13,9 +13,10 @@ GPIO.setmode(GPIO.BOARD)
 channel = 15
 GPIO.setup(channel, GPIO.OUT)
 
-p = GPIO.PWM(channel,500)
+p = GPIO.PWM(channel,100)
 p.start(50)
 all_move_local = []
+
 
 def baseline():
 	p.ChangeDutyCycle(50)
@@ -25,13 +26,14 @@ def update_pin():
 	if movements:
 		move_local = movements
 		global movements
+                
 		movements = []
-		move_local = np.divide(move_local, 3)
+		move_local = np.divide(move_local, 1.5)
 		move_local = np.clip(move_local, -50, 50)
 		move_local = move_local.mean(dtype=np.int)
 		move_local +=50
 		print(move_local)
-		all_move_local = all_move_local.append(move_local)
+		
 		p.ChangeDutyCycle(100.0 - move_local)
 		Timer(delay, update_pin).start()
 	else:
@@ -43,7 +45,7 @@ update_pin()
 while 1:
 	try:
 		events=mouse.read()
-		movements.extend([events.state for event in events if event.code == "REL_Y"])
+		movements.extend([event.state for event in events if event.code == "REL_Y"])
 	except KeyboardInterrupt:
 		p.stop()
 		GPIO.cleanup()

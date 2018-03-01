@@ -3,7 +3,7 @@ import json
 
 import picamera
 
-CONF_FILE = '/home/pi/pupil_dilation/camera_conf.json'
+CONF_FILE = '/home/pi/master/pi/camera_conf.json'
 
 def load_conf(c_file):
     try:
