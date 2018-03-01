@@ -1,5 +1,5 @@
 from queue import Queue
-from threading 
+import threading 
 
 import RPi.GPIO as GPIO
 import os
