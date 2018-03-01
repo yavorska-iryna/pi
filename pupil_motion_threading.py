@@ -76,7 +76,7 @@ class pi_video(threading.Thread):
 	        if GPIO.event_detected(on_pin):
 	            time_string = strftime("%Y-%m-%d_%H-%M-%S",time.localtime())
 	            base_dir = '/home/pi/Videos'
-	        vfile = os.path.join(base_dir,"".join(['pupil_',time_string, '.h264']))
+	        	vfile = os.path.join(base_dir,"".join(['pupil_',time_string, '.h264']))
 	            print(vfile)
 	            camera.start_recording(vfile, format='h264')
 	            c=datetime.now()
@@ -113,7 +113,7 @@ class pi_video(threading.Thread):
 	                json.dump(SCT, f, ensure_ascii=False)
 	                print('saved SCTs in {}'.format(name))
 	            
-	            SCT=[]
+	            	SCT=[]
 
 class pi_motion(threading.Thread):
 	def baseline():
