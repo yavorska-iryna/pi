@@ -143,7 +143,7 @@ class pi_motion(threading.Thread):
 	movements = []
 	update_pin()
 	
-	if __name__ == "__main__" and __package__ is None:
+	while 1:
 		try:
 			events=mouse.read()
 			movements.extend([event.state for event in events if event.code == "REL_Y"])
