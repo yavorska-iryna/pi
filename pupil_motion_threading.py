@@ -162,12 +162,12 @@ if __name__ == "__main__":
 	quit_flag.set()
 
 	#Create Thread
-	MotionThread = Thread(target=run_ball_tracking, args=(all_movements)) 
+	MotionThread = threading.Thread(target=run_ball_tracking, args=(all_movements)) 
 	#Start Thread 
 	MotionThread.start()
 
 	#Create Thread
-	PupilThread = Thread(target=run_pupil_tracking, arg=(on_pin, off_pin, SCT_pin)) 
+	PupilThread = threading.Thread(target=run_pupil_tracking, arg=(on_pin, off_pin, SCT_pin)) 
 	#Start Thread 
 	PupilThread.start()
 
