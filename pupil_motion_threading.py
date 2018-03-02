@@ -24,7 +24,7 @@ def baseline(i):
 
 def update_pin():
 	global movements
-	#global all_movements
+	global all_movements
 	if movements:
 		move_local = movements
 		movements = []
@@ -33,13 +33,13 @@ def update_pin():
 		move_local = move_local.mean(dtype=np.int)
 		move_local +=50
 		
-		#all_movements.append(move_local)
+		all_movements.append(move_local)
 
 		p.ChangeDutyCycle(100.0 - move_local)
 		Timer(delay, update_pin).start()
 	else:
 		baseline(50)
-		#all_movements.append(50)
+		all_movements.append(50)
 		Timer(delay, update_pin).start()
 
 def run_ball_tracking():
@@ -176,5 +176,5 @@ if __name__ == "__main__":
 	GPIO.cleanup()
 	time_string= strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
 	name= "".join([time_string, '.txt'])
-	# with open(name, 'w') as f:
-	# 	json.dump(all_movements, f, ensure_ascii=False)
+	with open(name, 'w') as f:
+		json.dump(all_movements, f, ensure_ascii=False)
