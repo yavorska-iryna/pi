@@ -158,8 +158,6 @@ if __name__ == "__main__":
 	movements = []
 	all_movements = []
 
-	quit_flag = threading.Event()
-	quit_flag.set()
 
 	#Create Thread
 	MotionThread = threading.Thread(target=run_ball_tracking, args=(all_movements)) 
@@ -167,7 +165,7 @@ if __name__ == "__main__":
 	MotionThread.start()
 
 	#Create Thread
-	PupilThread = threading.Thread(target=run_pupil_tracking, arg=(on_pin, off_pin, SCT_pin)) 
+	PupilThread = threading.Thread(target=run_pupil_tracking, args=(on_pin, off_pin, SCT_pin)) 
 	#Start Thread 
 	PupilThread.start()
 
