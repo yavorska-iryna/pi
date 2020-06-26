@@ -2,30 +2,28 @@
 
 pupil dilation and ball tracking
 
-pi_startup.py:
+*pi_startup.py:*
 
-runs pi camera on raspberry pi
+  runs pi camera on raspberry pi
 
-listens to TTL pulses to initiate and stop recording
+  listens to TTL pulses to initiate and stop recording
 
-saves timestamps of soundcard triggers
-
-dependent on video_record.py and camera json file
+  saves timestamps of soundcard triggers
 
 
-pupil_dilation.py:
+*pupil_dilation.py:* 
 
-load .mp4 file and calculates PDR
+  load .mp4 file and calculates PDR
 
-saves output in .txt ( json format)
+  saves output in .txt ( json format)
+  
+  early states of PDR analysis
 
 depending on your instalation of raspbian, extra dependencies that will need to be installed can vary: 
-sudo apt-get install gpac #for mp4 conversion
 
-sudo pip get install picamera numpy RPi json threading
+\sudo apt-get install gpac #for mp4 conversion
+\sudo pip get install picamera numpy RPi json threading
+\you will also need:
+\sudo raspi-config 
+\to enable picamera and ssh 
 
-you will also need:
-sudo raspi-config
-#to enable picamera and ssh 
-
-to isntall opencv for pupil analysis: http://www.pyimagesearch.com/2015/07/27/installing-opencv-3-0-for-both-python-2-7-and-python-3-on-your-raspberry-pi-2/
