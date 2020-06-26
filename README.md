@@ -19,11 +19,12 @@ pupil dilation and ball tracking
   
   early states of PDR analysis
 
-depending on your instalation of raspbian, extra dependencies that will need to be installed can vary: 
+* depending on your instalation of raspbian, extra dependencies that will need to be installed can vary: 
 
-\sudo apt-get install gpac #for mp4 conversion
-\sudo pip get install picamera numpy RPi json threading
-\you will also need:
-\sudo raspi-config 
-\to enable picamera and ssh 
+sudo apt-get install gpac #for mp4 conversion
+
+sudo pip get install picamera numpy RPi json threading
+you will also need:
+sudo raspi-config 
+to enable picamera and ssh 
 
